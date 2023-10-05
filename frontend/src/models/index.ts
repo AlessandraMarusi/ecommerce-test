@@ -4,3 +4,9 @@ export interface IProduct {
   description: string;
   price: string;
 }
+
+export interface IGetProductsResponse {
+  data: {
+    products: IProduct[];
+  };
+}

@@ -5,7 +5,7 @@ export interface IProductsContext {
   isFetching: boolean;
   setIsFetching(state: boolean): void;
   products: IProduct[];
-  setproducts(products: IProduct[]): void;
+  setProducts(products: IProduct[]): void;
 }
 
 const ProductsContext = createContext<IProductsContext | undefined>(undefined);
@@ -22,14 +22,16 @@ const useProductsContext = (): IProductsContext => {
 
 const ProductsProvider: FC = (props) => {
   const [isFetching, setIsFetching] = useState(false);
-  const [products, setproducts] = useState<IProduct[]>([]);
+  const [products, setProducts] = useState<IProduct[]>([]);
 
   const ProductContextValue: IProductsContext = {
     isFetching,
     setIsFetching,
     products,
-    setproducts,
+    setProducts,
   };
 
   return <ProductsContext.Provider value={ProductContextValue} {...props} />;
 };
+
+export { ProductsProvider, useProductsContext };
